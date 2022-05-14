@@ -1,0 +1,8 @@
+export enum CalculatorAction{
+    SET_FIRST = "SET_FIRST",
+    SET_SECOND = "SET_SECOND",
+    SET_RESULT = "SET_RESULT",
+    ADD_TO_HISTORY = "SET_HISTORY",
+    CLEAR_HISTORY = "CLEAR_HISTORY",
+    RESET_CALC = "RESET_CALC"
+}
