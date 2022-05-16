@@ -1,6 +1,7 @@
 import React from 'react'
 import {CalculatorOneFile} from './CalculatorInOneFile/Calculator'
 import { CalculatorPropsMethod } from './CalculatorOnlyPropsMethod/CalculatorPropsMethod'
+import { CalculatorReduxMethod } from './CalculatorReduxMethod/Calculator'
 import { CalculatorUseContextMethod } from './CalculatorUseContextMethod/Calculator'
 
 export const Calculator = () => {
@@ -10,6 +11,7 @@ export const Calculator = () => {
         <CalculatorOneFile />
         <CalculatorPropsMethod />
         <CalculatorUseContextMethod/>
+        <CalculatorReduxMethod />
         </>
 
     )

@@ -1,12 +1,20 @@
-import React, { useContext } from 'react'
+import { ChangeEvent } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {Input} from '../Components/Input/Input'
-import { CalculatorContext } from '../Context'
+import { setFirst, setSecond } from '../Reducers/actionCreators'
+import { RootState} from '../Store'
 
 export const Form = () => {
-    const context = useContext(CalculatorContext)
+    const {first, second} = useSelector((store:RootState) => store.calculator)
+    const dispatch = useDispatch()
 
-    if(!context) return null
-    const {first, second, handleFirstChange, handleSecondChange} = context
+    const handleFirstChange = (e:ChangeEvent<HTMLInputElement>) => {
+        dispatch(setFirst(Number(e.target.value)))
+    }
+
+    const handleSecondChange = (e:ChangeEvent<HTMLInputElement>) => {
+        dispatch(setSecond(Number(e.target.value)))
+    }
     return(
         <>
         <Input type="number" name={first.toString()} value={first} onChange={handleFirstChange}/>

@@ -1,43 +1,48 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import {Button} from '../Components/Button/Button'
 import {Operation} from '../Calculator'
-import { CalculatorContext } from '../Context'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState} from '../Store'
+import { addToHistory, setResult } from '../Reducers/actionCreators'
+
 
 export const ArithmeticButtons = () => {
-
-    const context = useContext(CalculatorContext)
-
-    if(!context) return null
-
-    const {first, second, setOperationResult, addHistory} = context
+    const dispatch = useDispatch()
+    const {first, second} = useSelector((store:RootState)=>store.calculator)
+    const handleSetOperationResult = (result: number | string) => {
+        dispatch(setResult(result))
+    }
+    const handleAddHistory = (line: string) => {
+        dispatch(addToHistory(line))
+    }
 
     const handleOperation = (operation: Operation) => {
         switch(operation){
             case Operation.ADD:{
                 const operationResult = first + second
-                setOperationResult(operationResult)
-                addHistory(`${first} + ${second} = ${operationResult}`)
+                handleSetOperationResult(operationResult)
+                handleAddHistory(`${first} + ${second} = ${operationResult}`)
                 break
             }
             case Operation.SUBTRACK:{
                 const operationResult = first - second
-                setOperationResult(operationResult)
-                addHistory(`${first} - ${second} = ${operationResult}`)
+                handleSetOperationResult(operationResult)
+                handleAddHistory(`${first} - ${second} = ${operationResult}`)
                 break
             }
             case Operation.MULTIPLY:{
                 const operationResult = first * second
-                setOperationResult(operationResult)
-                addHistory(`${first} * ${second} = ${operationResult}`)
+                handleSetOperationResult(operationResult)
+                handleAddHistory(`${first} * ${second} = ${operationResult}`)
                 break
             }
             case Operation.DIVIDE:{
                 const operationResult = first / second
                 if(second === 0 ){
-                    setOperationResult('Nie mozna dzielic przez 0')
+                    handleSetOperationResult('Nie mozna dzielic przez 0')
                 }
-                else setOperationResult(operationResult)
-                addHistory(`${first} / ${second} = ${operationResult}`)
+                else handleSetOperationResult(operationResult)
+                handleAddHistory(`${first} / ${second} = ${operationResult}`)
                 break
             }
         }

@@ -1,18 +1,26 @@
-import React, {useContext} from 'react'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import {Button} from '../Components/Button/Button'
-import { CalculatorContext } from '../Context'
+import { RootState } from '../Store'
+import { clearHistory, setFirst, setSecond, setResult } from '../Reducers/actionCreators'
+
 
 export const AnotherButtons = () => {
-    
-    const context = useContext(CalculatorContext)
-    
-    if(!context) return null
-    
-    const {clearHistory, resetCalc, history} = context
+    const dispatch = useDispatch()
+    const {history} = useSelector((store: RootState)=>store.calculator)
+
+    const handleClearHistory = () => {
+        dispatch(clearHistory())
+    }
+    const handleResetCalc = () => {
+        dispatch(setFirst(0))
+        dispatch(setSecond(0))
+        dispatch(setResult(0))
+    }
     return(
         <>
-        <Button sign="CLEAR HISTORY" onClick={clearHistory} width='120px' height='35px'/>
-        <Button sign={`RESET (${history.length})`} onClick={resetCalc} width='120px' height='35px'/>
+        <Button sign="CLEAR HISTORY" onClick={handleClearHistory} width='120px' height='35px'/>
+        <Button sign={`RESET (${history.length})`} onClick={handleResetCalc} width='120px' height='35px'/>
         </>
     )
 }

@@ -39,12 +39,53 @@ interface ClearHistory {
 }
 
 interface ResetCalc {
-    type: CalculatorAction.CLEAR_HISTORY,
+    type: CalculatorAction.RESET_CALC,
+    payload: number | string
 }
 
 type Action = SetFirst | SetSecond | SetResult | AddToHistory | ClearHistory | ResetCalc
 
 
 export default (state=initialState, action: Action) => {
-    return state
+    switch(action.type){
+        case CalculatorAction.SET_FIRST:{
+            return {
+                ...state, 
+                first: action.payload
+            }
+        }
+        case CalculatorAction.SET_SECOND:{
+            return {
+                ...state, 
+                second: action.payload
+            }
+        }
+        case CalculatorAction.SET_RESULT:{
+            return{
+                ...state,
+                result: action.payload
+            }
+        }
+        case CalculatorAction.ADD_TO_HISTORY:{
+            return {
+                ...state,
+                history: [...state.history, action.payload]
+            }
+        }
+        case CalculatorAction.CLEAR_HISTORY:{
+            return{
+                ...state,
+                history: []
+            }
+        }
+        case CalculatorAction.RESET_CALC:{
+            return{
+                ...state,
+                first: 0,
+                second: 0,
+                result: 0
+            }
+        }
+        default: return state;
+    }
 }

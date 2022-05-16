@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
-import { CalculatorContext } from '../Context'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { RootState } from '../Store'
+
 
 export const CalculatorHistory = () => {
 
-    const context = useContext(CalculatorContext)
+    const {history} = useSelector((store: RootState)=>store.calculator)
 
-    if(!context) return null
-    const {history} = context
     return(
         <ul>
             {history
