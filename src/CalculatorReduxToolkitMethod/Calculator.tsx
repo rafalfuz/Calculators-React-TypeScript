@@ -14,10 +14,10 @@ export enum Operation {
 }
 
 
-export const CalculatorReduxMethod = () => {
+export const CalculatorReduxToolkit = () => {
      return (
         <Provider store={store}>
-        <h1>Calculator Redux Method Code</h1>
+        <h1>Calculator Redux Toolkit Method Code</h1>
         <Form/>
         <CalculatorResult/>
         <CalculatorButtons/>

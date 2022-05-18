@@ -59,7 +59,7 @@ export const CalculatorOneFile = () => {
     
     return (
         <>
-        <h1>Calculator </h1>
+        <h1>Calculator One File Code</h1>
         <input type='number' name='first' value={first} onChange={handleFirstChange}/>
         <input type='number' name='second' value={second} onChange={handleSecondChange}/>
         <hr/>

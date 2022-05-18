@@ -57,7 +57,7 @@ export const CalculatorUseContextMethod = () => {
             handleFirstChange,
             handleSecondChange}
         }>
-        <h1>Calculator</h1>
+        <h1>Calculator useContext Method Code</h1>
         <Form/>
         <CalculatorResult/>
         <CalculatorButtons/>

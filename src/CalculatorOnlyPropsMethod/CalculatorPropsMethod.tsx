@@ -44,7 +44,7 @@ export const CalculatorPropsMethod = () => {
     }
     return (
         <>
-        <h1>Calculator</h1>
+        <h1>Calculator Props Method Code</h1>
         <Form 
             first={first} 
             second={second} 
